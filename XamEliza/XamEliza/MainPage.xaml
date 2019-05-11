@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamEliza"
+             x:Class="XamEliza.MainPage">
+
+    <!--https://www.kissclipart.com/bot-icon-creative-commons-clipart-computer-icons-i-4knmy3/-->
+    <!-- https://www.kissclipart.com/portable-network-graphics-computer-icons-clip-art-avatar-encapsulated-postscript-abp4hj/ -->
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <DataTemplate x:Key="UserTemplate">
+                <Grid>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame CornerRadius="2" BackgroundColor="Beige" Margin="5">
+                        <Label Text="{Binding Text}" WidthRequest="200" LineBreakMode="WordWrap" HorizontalTextAlignment="End" />
+                    </Frame>
+
+                    <Image Grid.Column="1" Source="user.png" WidthRequest="50" HeightRequest="50" 
+                           Margin="5" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    
+                </Grid>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="ElizaTemplate">
+                <Grid>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="bot.png" WidthRequest="50" HeightRequest="50" Margin="5" />
+                    
+                    <Frame CornerRadius="4" BackgroundColor="AliceBlue" Margin="5" Grid.Column="1">
+                        <Label Text="{Binding Text}" WidthRequest="200" LineBreakMode="WordWrap" />
+                    </Frame>
+                    
+                </Grid>
+            </DataTemplate>
+
+            <local:SpeakerSelector x:Key="SpeakerSelector"
+                    UserTemplate="{StaticResource UserTemplate}"
+                    ElizaTemplate="{StaticResource ElizaTemplate}" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+
+        <Label Text="Eliza" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" />
+
+        <CollectionView x:Name="Conversation" ItemTemplate="{StaticResource SpeakerSelector}" 
+                        ItemsUpdatingScrollMode="KeepLastItemInView" />
+
+        <Grid BackgroundColor="LightGray" HeightRequest="60" MinimumHeightRequest="60">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Entry x:Name="UserEntry"></Entry>
+            <Button Text="Say" Grid.Column="1" Clicked="Button_Clicked"></Button>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
