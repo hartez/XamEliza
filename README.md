@@ -1,12 +1,12 @@
 # XamEliza
 
-Classic Eliza chatbot in Xamarin.Forms
+Classic [Eliza chatbot](https://en.wikipedia.org/wiki/ELIZA) in Xamarin.Forms
 
 I whipped this up mostly to show that the [CollectionView control](https://github.com/xamarin/Xamarin.Forms/issues/3172) can now handle implementing chat-style applications.
 
 The ItemsUpdatingScrollMode property isn't in a release yet, so you'll need to install the 4.1.0-custom nupkg file from the repository root.
 
-Using the C# ELIZA implementation from https://github.com/sirkris/ELIZA.NET (https://www.nuget.org/packages/ELIZA.NET/ on Nuget).
+The actual ELIZA code is using the C# implementation from https://github.com/sirkris/ELIZA.NET (https://www.nuget.org/packages/ELIZA.NET/ on Nuget).
 
 Chat images from kiss clipart
 
